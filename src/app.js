@@ -19,9 +19,11 @@ app.use(express.static("public"));
 // admin imports
 import adminRouter from "./routes/admin.routes.js";
 import categoryRouter from "./routes/category.routes.js";
+import productRouter from "./routes/product.routes.js";
 
 // admin routes
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/admin", categoryRouter);
+app.use("/api/v1/admin", productRouter);
 
 export { app };
