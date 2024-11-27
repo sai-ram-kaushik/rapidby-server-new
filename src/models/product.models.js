@@ -33,6 +33,11 @@ const productSchema = new mongoose.Schema(
          required: true,
       },
 
+      status: {
+         type: String,
+         default: "Pending",
+      },
+
       aboutProduct: {
          type: String,
          required: true,

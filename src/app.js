@@ -20,10 +20,12 @@ app.use(express.static("public"));
 import adminRouter from "./routes/admin.routes.js";
 import categoryRouter from "./routes/category.routes.js";
 import productRouter from "./routes/product.routes.js";
+import orderRouter from "./routes/order.routes.js";
 
 // admin routes
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/admin", categoryRouter);
 app.use("/api/v1/admin", productRouter);
+app.use("/api/v1/admin", orderRouter);
 
 export { app };

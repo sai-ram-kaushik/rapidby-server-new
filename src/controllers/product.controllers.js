@@ -5,11 +5,13 @@ import { Product } from "../models/product.models.js";
 import { Category } from "../models/category.models.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
+// creating a product
 const createProduct = asyncHandler(async (req, res) => {
-   const { name, category, stock, amount, quantity, aboutProduct } = req.body;
+   const { name, category, stock, status, amount, quantity, aboutProduct } =
+      req.body;
 
    if (
-      [name, category, stock, amount, quantity, aboutProduct].some(
+      [name, category, stock, status, amount, quantity, aboutProduct].some(
          (field) => field === ""
       )
    ) {
@@ -41,6 +43,7 @@ const createProduct = asyncHandler(async (req, res) => {
       imageUrl: productImage.url,
       amount,
       quantity,
+      status,
       aboutProduct,
    });
 
@@ -49,6 +52,7 @@ const createProduct = asyncHandler(async (req, res) => {
       .json(new ApiResponse(201, product, "Product has been created"));
 });
 
+// getting all the data of the product
 const getAllProducts = asyncHandler(async (req, res) => {
    const products = await Product.find();
 
@@ -57,6 +61,7 @@ const getAllProducts = asyncHandler(async (req, res) => {
       .json(new ApiResponse(200, products, "All products has been retrieved"));
 });
 
+// get the count of the available products
 const getCountOfTotalProducts = asyncHandler(async (req, res) => {
    const product = await Product.countDocuments();
 
